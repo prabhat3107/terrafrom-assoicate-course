@@ -1,17 +1,17 @@
 resource "aws_instance" "us_east_1_ec2" {
-  provider    = aws.us-east-1
-  ami           = "${data.aws_ami.amazonlinux2_us_east_1.id}"
-  instance_type          = "${var.instance_type}"
-  key_name               = "${var.key_name}"
+  provider               = aws.us-east-1
+  ami                    = data.aws_ami.amazonlinux2_us_east_1.id
+  instance_type          = var.instance_type
+  key_name               = var.key_name
   vpc_security_group_ids = ["${module.us_east_1_security_group.security_group_id}"]
   subnet_id              = data.terraform_remote_state.us_east_1_app001_remote.outputs.vpc_private_subnets[0]
-  #iam_instance_profile   = aws_iam_instance_profile.ec2_demo_instance_profile.name
+  iam_instance_profile   = aws_iam_instance_profile.ec2_demo_instance_profile.name
 
   tags = merge(
     data.terraform_remote_state.global_app001_remote.outputs.default_tags,
     var.default_tags,
     {
-    Name = "us-east-1-ec2"
+      Name = "us-east-1-ec2"
     }
   )
 }

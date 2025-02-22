@@ -25,3 +25,17 @@ data "aws_ami" "amazonlinux2_us_west_2" {
   }
   owners = ["amazon"]
 }
+
+data "aws_ami" "amazonlinux2_ap_southeast_1" {
+  provider    = aws.ap-southeast-1
+  most_recent = true
+  filter {
+    name   = "name"
+    values = ["amzn2-ami-hvm-*-x86_64-gp2"]
+  }
+  filter {
+    name   = "virtualization-type"
+    values = ["hvm"]
+  }
+  owners = ["amazon"]
+}

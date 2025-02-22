@@ -8,18 +8,18 @@ variable "default_tags" {
 
 variable "key_name" {
   default = "my_aws_key"
-  type = string
+  type    = string
 }
 
 variable "instance_type" {
   default = "t2.micro"
-  type = string
+  type    = string
 }
 
-# variable "policies_to_attach" {
-#   default = [
-#     "arn:aws:iam::aws:policy/AmazonSSMManagedInstanceCore",
-#     "arn:aws:iam::aws:policy/CloudWatchAgentServerPolicy"
-#   ]
-#   type = list(string)
-# }
+variable "policies_to_attach" {
+  default = [
+    "arn:aws:iam::aws:policy/AmazonSSMManagedInstanceCore",
+    "arn:aws:iam::aws:policy/CloudWatchAgentServerPolicy"
+  ]
+  type = list(string)
+}
