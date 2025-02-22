@@ -1,0 +1,1 @@
+ec2_instance_name ="ec2i_environment_var_demo"
