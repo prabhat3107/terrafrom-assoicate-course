@@ -4,11 +4,11 @@ terraform {
   required_providers {
     aws = {
       source  = "hashicorp/aws"
-      version = "4.66"
+      version = ">= 5.0"
     }
   }
 
-  required_version = ">= 1.4.6"
+  #required_version = ">= 1.0"
 }
 
 provider "aws" {
@@ -20,7 +20,7 @@ module "vpc" {
   # To download the latest module, simply omit the version argument. 
   # However, if you wanted a specific module version, you could list it as shown below.
   # This version was released in 2023.
-  version = "4.0.2"
+  #version = "4.0.2"
 
   name = var.vpc_name
   cidr = var.vpc_cidr
@@ -36,7 +36,7 @@ module "vpc" {
 
 module "ec2_instances" {
   source  = "terraform-aws-modules/ec2-instance/aws"
-  version = "5.0.0"
+  #version = "5.0.0"
 
   name           = "Cluster-A-${count.index}"
   count = 3

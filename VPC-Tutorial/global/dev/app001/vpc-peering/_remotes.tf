@@ -7,6 +7,15 @@ data "terraform_remote_state" "global_app001_remote" {
   }
 }
 
+data "terraform_remote_state" "ap_southeast_1_app001_remote" {
+  backend = "s3"
+  config = {
+    bucket = "app01-tfs-s3-backend"
+    key    = "ap-southeast-1/dev/app001/terraform.tfstate"
+    region = "us-east-1"
+  }
+}
+
 data "terraform_remote_state" "us_east_1_app001_remote" {
   backend = "s3"
   config = {
